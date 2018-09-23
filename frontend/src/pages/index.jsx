@@ -90,8 +90,13 @@ class Index extends Component {
         return;
     }
 
+    let account = accounts.filter( function(account) { return account.name === name });
+    if (account.length < 1) {
+      alert("need to specify account that exist - useraaaaaaaa - or one created in the command line");
+    }
+
     // eosjs function call: connect to the blockchain
-    const eos = Eos({keyProvider: "5K2TB6g1PChRs9eg91FvwRdsj9nC7nBttwwDMe8tQ8SGF3XRVMs"}); // YES - speed of development, local testnet key LOL
+    const eos = Eos({keyProvider: account[0].privateKey }); // YES - speed of development, local testnet key LOL
     
     // SECURITY BOUNTY has been awarded to...
     // just kidding, don't be that guy who commits production keys to Github (here the hackathon so OK)
