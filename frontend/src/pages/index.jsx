@@ -213,6 +213,7 @@ class Index extends Component {
 
     return (
       <div>
+      {/*
         <AppBar position="static" color="default">
           <Toolbar>
             <Typography variant="title" color="inherit">
@@ -221,6 +222,8 @@ class Index extends Component {
           </Toolbar>
         </AppBar>
         {noteCards}
+      */}
+        
         <Paper className={classes.paper}>
           <form onSubmit={this.handleFormEvent}>
             <TextField
@@ -256,11 +259,14 @@ class Index extends Component {
             </Button>
           </form>
         </Paper>
-        <pre className={classes.pre}>
-          Below is a list of pre-created accounts information for add/update note:
-          <br/><br/>
-          accounts = { JSON.stringify(accounts, null, 2) }
-        </pre>
+        {/*
+          <pre className={classes.pre}>
+            Below is a list of pre-created accounts information for add/update note:
+            <br/><br/>
+            accounts = { JSON.stringify(accounts, null, 2) }
+          </pre>
+        */}
+
       </div>
     );
   }
