@@ -5,3 +5,10 @@ body {
   -o-background-size: cover;
   background-size: cover;
 }
+
+#input {
+  width: 400px;
+  margin: 0 auto;
+  margin-top: 30vh;
+  box-shadow: 0 0 16px 7px white;
+}

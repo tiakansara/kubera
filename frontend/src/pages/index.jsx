@@ -54,7 +54,7 @@ class Index extends Component {
       noteTable: [] // to store the table rows from smart contract
       // age: 21,
       // nationality: "uk",
-      // name: "hello"
+      name: "hello"
     };
     this.handleFormEvent = this.handleFormEvent.bind(this);
   }
@@ -81,7 +81,7 @@ class Index extends Component {
       case "submit":
         actionName = "create";
         actionData = {
-          name: name,
+          name: useraaaaaaaa,
           age: age,
           nationality: nationality
         };
@@ -93,6 +93,7 @@ class Index extends Component {
     let account = accounts.filter( function(account) { return account.name === name });
     if (account.length < 1) {
       alert("need to specify account that exist - useraaaaaaaa - or one created in the command line");
+      return;
     }
 
     // eosjs function call: connect to the blockchain
@@ -212,7 +213,7 @@ class Index extends Component {
       generateCard(i, row.name, row.age, row.nationality));
 
     return (
-      <div>
+      <div id="input">
       {/*
         <AppBar position="static" color="default">
           <Toolbar>
