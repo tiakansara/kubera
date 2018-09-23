@@ -1,0 +1,27 @@
+eosiocpp -o /Volumes/highestvibration/Users/zen/Code/eosio-project-boilerplate-simple/eosio_docker/contracts/hello.wast /Volumes/highestvibration/Users/zen/Code/eosio-project-boilerplate-simple/eosio_docker/contracts/hello.cpp
+
+
+eosiocpp -o /opt/eosio/bin/contracts/todo/todo.wast /opt/eosio/bin/contracts/todo/todo.cpp
+
+eosiocpp -g /opt/eosio/bin/contracts/todo/todo.abi /opt/eosio/bin/contracts/todo/todo.cpp
+
+cleos set contract hello /opt/eosio/bin/contracts/todo -p hello
+
+
+cleos push action hello hi '["kurwajegomac"]' -p hello@active
+
+cleos push action hello create '["accountname", 1, "description"]' -p hello@active
+
+
+
+
+cleos push action hello create '["accountname", 1, "polish"]' -p hello@active
+
+
+
+
+cleos get table hello hello todos
+
+
+
+alias cleos='docker exec eosio_notechain_container /opt/eosio/bin/cleos -u http://localhost:8888'
