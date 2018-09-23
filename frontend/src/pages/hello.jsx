@@ -10,13 +10,21 @@ class PageLanding extends Component {
     history.push('/');
   }
 
+  hideMe = (event) => {
+    event.preventDefault();
+    document.getElementById("mockup").style.display = "none"
+  }
+
   render() {
 
     return (
         <div className="Hello">
           <Link to='/'>Hello</Link>
+          <a href="" onClick={ this.hideMe }>hideMe</a>
+          <br/>
+          <br/>
 
-          <img src="mockup.png" class="centered"/>
+          <img src="mockup.png" className="centered" id="mockup"/>
           {/*
             <div style={{color:"white"}} onKeyDown={ this.nextHandler}>On Keydown Handler</div>
             <input onKeyDown={ this.nextHandler}/>
