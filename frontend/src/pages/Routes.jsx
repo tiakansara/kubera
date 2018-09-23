@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Index from './index.jsx'
 import Hello from './hello.jsx'
+import Hackers from './hackers.jsx'
 
 class Routes extends Component {
   render() {
@@ -10,6 +11,7 @@ class Routes extends Component {
         <Switch>
           <Route exact path="/" component={ Index }/>
           <Route exact path="/hello" component={ Hello }/>
+          <Route exact path="/hackers" component={ Hackers }/>
           {/* <Redirect to="/404"/> */}
         </Switch>
       </div>

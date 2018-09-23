@@ -12,6 +12,8 @@ import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 
+import { Link } from 'react-router-dom';
+
 // NEVER store private keys in any source code in your real life development
 // This is for demo purposes only!
 const accounts = [
@@ -51,10 +53,10 @@ class Index extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      noteTable: [] // to store the table rows from smart contract
+      noteTable: [], // to store the table rows from smart contract
       // age: 21,
       // nationality: "uk",
-      name: "hello"
+      name: "useraaaaaaaa"
     };
     this.handleFormEvent = this.handleFormEvent.bind(this);
   }
@@ -81,7 +83,7 @@ class Index extends Component {
       case "submit":
         actionName = "create";
         actionData = {
-          name: useraaaaaaaa,
+          name: name,
           age: age,
           nationality: nationality
         };
@@ -224,6 +226,8 @@ class Index extends Component {
         </AppBar>
         {noteCards}
       */}
+
+        <Link to='/Hello'>Hello</Link>
         
         <Paper className={classes.paper}>
           <form onSubmit={this.handleFormEvent}>

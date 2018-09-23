@@ -15,8 +15,12 @@ class PageLanding extends Component {
     return (
         <div className="Hello">
           <Link to='/'>Hello</Link>
-          <div style={{color:"white"}} onKeyDown={ this.nextHandler}>On Keydown Handler</div>
-          <input onKeyDown={ this.nextHandler}/>
+
+          <img src="mockup.png" class="centered"/>
+          {/*
+            <div style={{color:"white"}} onKeyDown={ this.nextHandler}>On Keydown Handler</div>
+            <input onKeyDown={ this.nextHandler}/>
+          */}
         </div>
     );
   }
