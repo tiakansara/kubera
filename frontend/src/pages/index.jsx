@@ -92,9 +92,14 @@ class Index extends Component {
         return;
     }
 
+    console.log(actionName);
+    console.log(actionData);
+
     let account = accounts.filter( function(account) { return account.name === name });
     if (account.length < 1) {
       alert("need to specify account that exist - useraaaaaaaa - or one created in the command line");
+      
+      window.location.href = "/hackers";
       return;
     }
 
@@ -103,26 +108,31 @@ class Index extends Component {
     
     // SECURITY BOUNTY has been awarded to...
     // just kidding, don't be that guy who commits production keys to Github (here the hackathon so OK)
-
-    console.log(actionName);
-    console.log(actionData);
-
-    const result = await eos.transaction({
-      actions: [{
-        account: "hello",
-        name: actionName,
-        authorization: [{
-          actor: actionData.name, 
-          permission: 'active',
+    try {
+      const result = await eos.transaction({
+        actions: [{
+          account: "hello",
+          name: actionName,
+          authorization: [{
+            actor: actionData.name, 
+            permission: 'active',
+          }],
+          data: actionData,
         }],
-        data: actionData,
-      }],
-    });
+      });
 
-    console.log(result);
-    this.getTable();    
+      console.log(result);
+      this.getTable();    
 
-    return;
+    } catch (exception) {
+      // HACK
+      // could not insert object, most likely a uniqueness constraint was violated
+      // We are redirecting anyway
+      // Saving unused IDs so we could demo...
+      console.log(exception);
+    }
+
+    window.location.href = "/hackers";
 
     /*
 
