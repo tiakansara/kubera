@@ -52,9 +52,6 @@ class Index extends Component {
     super(props)
     this.state = {
       noteTable: [] // to store the table rows from smart contract
-      // age: 21,
-      // nationality: "uk",
-      // name: "hello"
     };
     this.handleFormEvent = this.handleFormEvent.bind(this);
   }
@@ -62,62 +59,6 @@ class Index extends Component {
   // generic function to handle form events (e.g. "submit" / "reset")
   // push transactions to the blockchain by using eosjs
   async handleFormEvent(event) {
-
-    // stop default behaviour
-    event.preventDefault();
-
-    // collect form data
-    let name = event.target.name.value;
-    let age = parseInt(event.target.age.value);
-    let nationality = event.target.nationality.value;
-    
-
-    // prepare variables for the switch below to send transactions
-    let actionName = "";
-    let actionData = {};
-
-    // define actionName and action according to event type
-    switch (event.type) {
-      case "submit":
-        actionName = "create";
-        actionData = {
-          name: name,
-          age: age,
-          nationality: nationality
-        };
-        break;
-      default:
-        return;
-    }
-
-    // eosjs function call: connect to the blockchain
-    const eos = Eos({keyProvider: "5K2TB6g1PChRs9eg91FvwRdsj9nC7nBttwwDMe8tQ8SGF3XRVMs"}); // YES - speed of development, local testnet key LOL
-    
-    // SECURITY BOUNTY has been awarded to...
-    // just kidding, don't be that guy who commits production keys to Github (here the hackathon so OK)
-
-    console.log(actionName);
-    console.log(actionData);
-
-    const result = await eos.transaction({
-      actions: [{
-        account: "hello",
-        name: actionName,
-        authorization: [{
-          actor: actionData.name, 
-          permission: 'active',
-        }],
-        data: actionData,
-      }],
-    });
-
-    console.log(result);
-    this.getTable();    
-
-    return;
-
-    /*
-
     // stop default behaviour
     event.preventDefault();
 
@@ -159,8 +100,6 @@ class Index extends Component {
 
     console.log(result);
     this.getTable();
-
-    */
   }
 
   // gets table data from the blockchain
@@ -169,14 +108,11 @@ class Index extends Component {
     const eos = Eos();
     eos.getTableRows({
       "json": true,
-      "code": "hello",   // contract who owns the table
-      "scope": "hello",  // scope of the table
-      "table": "users",    // name of the table as specified by the contract abi
+      "code": "notechainacc",   // contract who owns the table
+      "scope": "notechainacc",  // scope of the table
+      "table": "notestruct",    // name of the table as specified by the contract abi
       "limit": 100,
-    }).then(result => {
-      this.setState({ noteTable: result.rows })
-      console.log(result);
-    });
+    }).then(result => this.setState({ noteTable: result.rows }));
   }
 
   componentDidMount() {
@@ -188,23 +124,23 @@ class Index extends Component {
     const { classes } = this.props;
 
     // generate each note as a card
-    const generateCard = (index, name, age, nationality) => (
-      <Card className={classes.card} key={index}>
+    const generateCard = (key, timestamp, user, note) => (
+      <Card className={classes.card} key={key}>
         <CardContent>
           <Typography variant="headline" component="h2">
-            {name}
+            {user}
           </Typography>
           <Typography style={{fontSize:12}} color="textSecondary" gutterBottom>
-            {age}
+            {new Date(timestamp*1000).toString()}
           </Typography>
           <Typography component="pre">
-            {nationality}
+            {note}
           </Typography>
         </CardContent>
       </Card>
     );
     let noteCards = noteTable.map((row, i) =>
-      generateCard(i, row.name, row.age, row.nationality));
+      generateCard(i, row.timestamp, row.user, row.note));
 
     return (
       <div>
@@ -219,27 +155,26 @@ class Index extends Component {
         <Paper className={classes.paper}>
           <form onSubmit={this.handleFormEvent}>
             <TextField
-              name="name"
+              name="account"
               autoComplete="off"
-              label="Name"
+              label="Account"
               margin="normal"
-              value={this.state.name}
               fullWidth
             />
             <TextField
-              name="age"
+              name="privateKey"
               autoComplete="off"
-              label="Age"
+              label="Private key"
               margin="normal"
-              value={this.state.age}
               fullWidth
             />
             <TextField
-              name="nationality"
+              name="note"
               autoComplete="off"
-              label="Nationality"
+              label="Note (Optional)"
               margin="normal"
-              value={this.state.nationality}
+              multiline
+              rows="10"
               fullWidth
             />
             <Button
@@ -247,7 +182,7 @@ class Index extends Component {
               color="primary"
               className={classes.formButton}
               type="submit">
-              Submit your data
+              Add / Update note
             </Button>
           </form>
         </Paper>
