@@ -207,7 +207,7 @@ class Index extends Component {
 
     // generate each note as a card
     const generateCard = (index, name, age, nationality) => (
-      <Card className={classes.card} key={index}>
+      <Card className={classes.card + ' testClass'} key={index}>
         <CardContent>
           <Typography variant="headline" component="h2">
             {name}
@@ -235,6 +235,8 @@ class Index extends Component {
               </Typography>
             </Toolbar>
           </AppBar>
+
+          <Link to='/Hello'>mission control</Link>
 
           {noteCards}
         </div>

@@ -21,7 +21,7 @@ class PageLanding extends Component {
           </video>
 
           <div className="content">
-            <Link to='/Hello'><h1 style={{color: 'rgba(11, 11, 11, 1)'}}>done</h1></Link>
+            <Link to='/Data'><h1 style={{color: 'rgba(11, 11, 11, 1)'}}>done</h1></Link>
           </div>
 
 

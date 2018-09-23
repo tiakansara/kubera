@@ -97,7 +97,7 @@ class Index extends Component {
 
     let account = accounts.filter( function(account) { return account.name === name });
     if (account.length < 1) {
-      alert("need to specify account that exist - useraaaaaaaa - or one created in the command line");
+      console.log("need to specify account that exist - useraaaaaaaa - or one created in the command line");
       
       window.location.href = "/hackers";
       return;

@@ -12,7 +12,12 @@ class PageLanding extends Component {
 
   hideMe = (event) => {
     event.preventDefault();
-    document.getElementById("mockup").style.display = "none"
+
+    if (document.getElementById("mockup").style.display === "none") {
+      document.getElementById("mockup").style.display = "block";
+    } else {
+      document.getElementById("mockup").style.display = "none";
+    }
   }
 
   render() {
