@@ -12,12 +12,12 @@ import { ConnectedRouter } from 'react-router-redux'
 import store, { history } from './store';
 // import { App } from 'apps/App';
 
-import Index from './pages/index';
+import Routes from './pages/Routes.jsx';
 
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <Index store={store}/>
+      <Routes store={store}/>
     </ConnectedRouter>
   </Provider>,
   document.getElementById('root')
