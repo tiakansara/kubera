@@ -225,62 +225,20 @@ class Index extends Component {
       generateCard(i, row.name, row.age, row.nationality));
 
     return (
-      <div id="input">
-      {/*
-        <AppBar position="static" color="default">
-          <Toolbar>
-            <Typography variant="title" color="inherit">
-              Note Chain
-            </Typography>
-          </Toolbar>
-        </AppBar>
-        {noteCards}
-      */}
+      <div id="fort">
+      
+        <div id="fort-stuff">
+          <AppBar position="static" color="default">
+            <Toolbar>
+              <Typography variant="title" color="inherit">
+                Kubera
+              </Typography>
+            </Toolbar>
+          </AppBar>
 
-        <Link to='/Hello'>Hello</Link>
-        
-        <Paper className={classes.paper}>
-          <form onSubmit={this.handleFormEvent}>
-            <TextField
-              name="name"
-              autoComplete="off"
-              label="Name"
-              margin="normal"
-              value={this.state.name}
-              fullWidth
-            />
-            <TextField
-              name="age"
-              autoComplete="off"
-              label="Age"
-              margin="normal"
-              value={this.state.age}
-              fullWidth
-            />
-            <TextField
-              name="nationality"
-              autoComplete="off"
-              label="Nationality"
-              margin="normal"
-              value={this.state.nationality}
-              fullWidth
-            />
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.formButton}
-              type="submit">
-              Submit your data
-            </Button>
-          </form>
-        </Paper>
-        {/*
-          <pre className={classes.pre}>
-            Below is a list of pre-created accounts information for add/update note:
-            <br/><br/>
-            accounts = { JSON.stringify(accounts, null, 2) }
-          </pre>
-        */}
+          {noteCards}
+        </div>
+    
 
       </div>
     );
